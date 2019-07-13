@@ -3,129 +3,52 @@
 
 using namespace std;
 
-// Operation Function Prototypes
-double addition(double a, double b);
-double subtraction(double c, double d);
-double multiplication(double f, double g);
-double division(double h, double i);
-int mod(int j, int k);
-
-
 int main()
 {
-    char choice ;
-    do
+	int size, arr[100], x, y, temp;
+
+	// Setting of parameters for sorting
+	cout << "Selection Sorting..." << endl;
+	cout << "Enter the array size: " << endl;
+	cin >> size;
+	cout << "Enter the "<<size<< " elements"<<endl;
+
+	// Sets the array value
+	for (x = 0; x < size; x++)
 	{
-		double x, t, z, u, v;
-		int w;
-		// Menu for choosing an operation
-		cout << "Choose an operation. Enter number from 1-5." << endl;
+		cin >> arr[x];
+	}
+	
+	// Displays the elements entered
+	cout<<"Your data "<<endl;
+	for (x = 0; x < size; x++)
 
-		cout << "Menu:" << endl;
-
-		cout << "" << endl;
-
-		cout << "1.Addition" << endl;
-		cout << "2.Subtraction" << endl;
-		cout << "3.Multiplication" << endl;
-		cout << "4.Division" << endl;
-		cout << "5.Modulus" << endl;
-
-		cout << "" << endl;
-
-		// Entering of operation
-		cout << "Enter your choice: ";
-		cin >> w;
-
-		cout << "" << endl;
-
-		// Switch loop for selection of operation
-		switch (w)
+	{
+		cout << arr[x]<<" ";
+	}
+	
+	cout<<""<<endl;
+	
+	// Uses selection sorting on elements
+	for (x = 0; x < size; x++)
+	{
+		for (y = x + 1; y < size; y++)
 		{
-		case 1:
-
-			cout << "Enter two numbers "; cin >> x >> t;
-			z = addition(x, t);
-			cout << "Result " << z << endl;
-			break;
-
-		case 2:
-
-			cout << "Enter two numbers "; cin >> x >> t;
-			z = subtraction(x, t);
-			cout << "Result " << z << endl;
-			break;
-
-		case 3:
-
-			cout << "Enter two numbers "; cin >> x >> t;
-			z = multiplication(x, t);
-			cout << "Result " << z << endl;
-			break;
-
-		case 4:
-
-			cout << "Enter two numbers "; cin >> x >> t;
-			z = division(x, t);
-			cout << "Result " << z << endl;
-			break;
-
-		case 5:
-
-			cout << "Enter two numbers "; cin >> u >> v;
-			w = mod(u, v);
-			cout << "Result " << w << endl;
-
-			break;
-
-		default:
-
-			cout << "Invalid!" << endl;
+			if (arr[x]> arr[y])
+			{
+				temp = arr[x];
+				arr[x] = arr[y];
+				arr[y] = temp;
+			}
 		}
-		// Enter 'y' to loop program
-		cout << "Continue? If yes, enter y. To quit, press any other letter. ";
-		cin >> choice;
-		cout << "" << endl;
-		
-    }
-    while(choice == 'y','Y');
-    getch(); 
+	}
+
+	// Elements after sorting in ascending order
+	cout << "After using selection sort... \n";
+	for (x = 0; x < size; x++)
+	{
+		cout << arr[x] << " ";
+	}
+	_getch();
 	return 0;
-}
-
-//Operation Functions
-double addition(double a, double b)
-{
-	double r;
-	r = a + b;
-	return r;
-}
-
-double subtraction(double c, double d)
-{
-	double r;
-	r = c - d;
-	return r;
-}
-
-
-double multiplication(double f, double g)
-{
-    double r;
-	r = f * g;
-	return r;
-}
-
-double division(double h, double i)
-{
-	double r;
-	r = h / i;
-	return r;
-}
-
-int mod(int j, int k)
-{
-	int r;
-	r = j % k;
-	return r;
 }
